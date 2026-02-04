@@ -51,7 +51,7 @@ hr {
     margin-bottom: 20px;
 }
 
-.container {
+.app-container {
     margin: 50px;
     display: flex;
     flex-direction: column;
@@ -113,4 +113,10 @@ td {
 
 .form-container .form-group-checkbox {
     margin-bottom: 20px;;
+}
+.auth-actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    
 }

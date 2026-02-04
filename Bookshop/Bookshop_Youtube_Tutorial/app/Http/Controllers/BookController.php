@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
+use App\Models\Publisher;
+use Symfony\Component\Translation\Dumper\YamlFileDumper;
 
 class BookController extends Controller
 {
@@ -22,7 +24,14 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view("books.create");
+        /*if(auth()->check()){
+            if(auth()->user()->cannot('create', Book::class)){
+                abort(403);
+            }
+        }*/
+        $this->authorize("create", Book::class);
+        $publishers = Publisher::all(); //elmentjük a modell összes elemét
+        return view("books.create", ["publishers" => $publishers]);//átadjuk a create oldalnak, ".."-néven a $.. változót
     }
 
     /**
@@ -48,7 +57,8 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        return view("books.edit", ["book" => $book]);
+        $publishers = Publisher::all();
+        return view("books.edit", ["book" => $book, "publishers" => $publishers]);
     }
 
     /**

@@ -26,7 +26,9 @@ class UpdateBookRequest extends FormRequest
             "price" => ["required", "numeric"],
             "year" => ["required", "min:0", "integer"],
             "limited" => ["boolean"],
-            "author" => ["required", "string"]
+            "author" => ["required", "string"],
+            "publiseher_id" => ["required", "integer", "exists:App\Models\Publisher,id"]//adott modelhez tartozik-e amit sezretnénk
+        
         ];
     }
 

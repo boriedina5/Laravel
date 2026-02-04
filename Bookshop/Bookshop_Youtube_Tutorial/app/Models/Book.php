@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Policies\BookPolicy;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+#[UsePolicy(BookPolicy::class)] //hivatkozásokat teszi be
 
 class Book extends Model
 {
@@ -18,7 +21,8 @@ class Book extends Model
         "author",
         "price",
         "year",
-        "limited"
+        "limited",
+        "publisher_id" //kitölthető a felhasználó részéről
     ];
 
     //elations - HasOne, HasMany, ManyToMany(BelongsToMany) +1=>BelongsTo

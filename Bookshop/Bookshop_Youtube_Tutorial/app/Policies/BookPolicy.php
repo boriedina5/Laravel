@@ -13,6 +13,9 @@ class BookPolicy
      */
     public function viewAny(User $user): bool
     {
+        if($user->id == 1){
+            return true;
+        }
         return false;
     }
 

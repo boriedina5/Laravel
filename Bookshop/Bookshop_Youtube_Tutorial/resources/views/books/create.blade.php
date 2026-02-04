@@ -42,6 +42,14 @@
                 <label for="author">Author</label>
                 <input type="text" name="author" id="author" value="{{ old("author") }}">
             </div>
+            <div class="form-group">
+                <select name="publisher_id" id="publisher_id">
+                    <option value="" selected disabled>Please choose a publisher...</option>
+                    @foreach ($publishers as $publisher)
+                        <option value="{{ $publisher->id }}">{{$publisher->name}}</option> {{--lenyíló menü--}}
+                    @endforeach
+                </select>
+            </div>
             <div>
                 <button class="like-a-tag">Create new book</button>
             </div>
